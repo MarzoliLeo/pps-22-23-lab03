@@ -29,10 +29,10 @@ object Lists extends App :
       case (Cons(_, t), n) => drop(t, n - 1)
 
     //Task 1_b
-    def append[A](left: List[A], right: List[A]): List[A] = (left, right) match
-      case (Cons(h, Nil()), right) => Cons(h, right)
-      case (Cons(_, _), Nil()) => left
-      case (Cons(h1, t1), Cons(h2, t2)) => Cons(h1, append(t1, Cons(h2, t2)))
+    def append[A](left: List[A], right: List[A]): List[A] = left match {
+      case Nil() => right
+      case Cons(h, t) => Cons(h, append(t, right))
+    }
 
     //Task 1_c
     def flatMap[A, B](l: List[A])(f: A => List[B]): List[B] = (l, f) match
@@ -40,7 +40,8 @@ object Lists extends App :
       case (Cons(h, t), f) => append(f(h), flatMap(t)(f))
 
     //Task 1_d
-    def filterWithFlatMap[A](l1: List[A])(pred: A => Boolean): List[A] =
+    def filterWithFlatMap[A](l1: List[A])(pred: A => Boolean): List[A] = { flatMap(l1)(a => if (pred(a)) Cons(a, Nil()) else Nil()) }
+    def mapWithFlatMap[A, B](l: List[A])(mapper: A => B): List[B] = { flatMap(l)(a => Cons(mapper(a), Nil())) }
 
   val l = List.Cons(10, List.Cons(20, List.Cons(30, List.Nil())))
   println(List.sum(l)) // 60

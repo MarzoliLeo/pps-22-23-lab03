@@ -43,5 +43,5 @@ class ListTest:
 
   @Test
   def testFilterWithFlatMap() =
-    val l: List[Int] = Cons(1, Cons(2, Cons(3, Cons(4, Nil()))))
-    assertEquals( Cons(2, Cons(4, Nil())), filterViaFlatMap(l)(_ % 2 == 0))
+    val l2 = Cons(1, Cons(2, Cons(3, Cons(4, Nil()))))
+    assertEquals(Cons(2, Cons(4, Nil())), filterWithFlatMap(l2)(_ % 2 == 0))
