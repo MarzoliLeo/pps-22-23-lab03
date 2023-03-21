@@ -39,6 +39,8 @@ object Lists extends App :
       case (Cons(h, Nil()), f) => f(h)
       case (Cons(h, t), f) => append(f(h), flatMap(t)(f))
 
+    //Task 1_d
+    def filterWithFlatMap[A](l1: List[A])(pred: A => Boolean): List[A] =
 
   val l = List.Cons(10, List.Cons(20, List.Cons(30, List.Nil())))
   println(List.sum(l)) // 60

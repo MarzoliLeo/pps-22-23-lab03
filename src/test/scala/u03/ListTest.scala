@@ -40,3 +40,8 @@ class ListTest:
     // Cons(11, Cons(21, Cons(31, Nil())))
     assertEquals(Cons(11, Cons(12, Cons(21, Cons(22, Cons(31, Cons(32, Nil())))))), flatMap(l)(v => Cons(v + 1, Cons(v + 2, Nil()))))
   // Cons(11, Cons(12, Cons(21, Cons(22, Cons(31, Cons(32, Nil()))))))
+
+  @Test
+  def testFilterWithFlatMap() =
+    val l: List[Int] = Cons(1, Cons(2, Cons(3, Cons(4, Nil()))))
+    assertEquals( Cons(2, Cons(4, Nil())), filterViaFlatMap(l)(_ % 2 == 0))
