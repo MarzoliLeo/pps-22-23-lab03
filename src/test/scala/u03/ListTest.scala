@@ -23,6 +23,6 @@ class ListTest:
 
   @Test
   def testDropList() =
-    assertEquals(Cons(20, Cons(30, Nil())), drop(lst, 1)) // Cons (20 , Cons (30 , Nil ()))
-    assertEquals(Cons(30, Nil()), drop(lst, 2)) // Cons (30 , Nil ())
-    assertEquals(Nil(), drop(lst, 5)) // Nil ()
+    assertEquals(Cons(20, Cons(30, Nil())), drop(l, 1)) // Cons (20 , Cons (30 , Nil ()))
+    assertEquals(Cons(30, Nil()), drop(l, 2)) // Cons (30 , Nil ())
+    assertEquals(Nil(), drop(l, 5)) // Nil ()
