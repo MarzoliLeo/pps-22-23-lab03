@@ -39,7 +39,7 @@ class ListTest:
     assertEquals(Cons(11, Cons(21, Cons(31, Nil()))), flatMap(l)(v => Cons(v + 1, Nil())))
     // Cons(11, Cons(21, Cons(31, Nil())))
     assertEquals(Cons(11, Cons(12, Cons(21, Cons(22, Cons(31, Cons(32, Nil())))))), flatMap(l)(v => Cons(v + 1, Cons(v + 2, Nil()))))
-  // Cons(11, Cons(12, Cons(21, Cons(22, Cons(31, Cons(32, Nil()))))))
+    // Cons(11, Cons(12, Cons(21, Cons(22, Cons(31, Cons(32, Nil()))))))
 
   @Test
   def testFilterWithFlatMap() =
@@ -50,3 +50,15 @@ class ListTest:
   def testMapWithFlatMap() =
     val lmap = Cons(1, Cons(2, Cons(3, Cons(4, Nil()))))
     assertEquals(Cons(2, Cons(4, Cons(6, Cons(8, Nil())))), mapWithFlatMap(lmap)(_ * 2))
+
+  @Test
+  def testMax() =
+    import u02.Optionals.Option.*
+    assertEquals(Some(25), max(Cons(10, Cons(25, Cons(20, Nil()))))) // Some (25)
+    assertEquals(None(), max(Nil())) // None ()
+
+  @Test
+  def testGetTeachersCourses() =
+    import u02.Optionals.Modules.Person.*
+    val persons = Cons(Student("Alice", 2022), Cons(Teacher("Bob", "Math"), Cons( Teacher("Charlie", "Physics"), Nil())))
+    assertEquals(Cons("Math", Cons("Physics", Nil())) getTeacherCourses(persons)) // List("Math", "Physics")

@@ -1,5 +1,9 @@
 package u03
 
+import u02.Optionals.*
+import u02.Optionals.Option.*
+
+
 object Lists extends App :
 
   // A generic linkedlist
@@ -43,6 +47,20 @@ object Lists extends App :
     def filterWithFlatMap[A](l1: List[A])(pred: A => Boolean): List[A] = { flatMap(l1)(a => if (pred(a)) Cons(a, Nil()) else Nil()) }
     def mapWithFlatMap[A, B](l: List[A])(mapper: A => B): List[B] = { flatMap(l)(a => Cons(mapper(a), Nil())) }
 
+    //Task 2
+    import u02.Optionals.Option.*
+    def max(l: List[Int]): Option[Int] = l match {
+      case Nil() => None()
+      case Cons(h, Nil()) => Some(h)
+      case Cons(h, t) => {
+        val maxTail = max(t)
+        maxTail match {
+          case None() => Some(h)
+          case Some(maxVal) => if (maxVal > h) maxTail else Some(h)
+        }
+      }
+    }
+  
   val l = List.Cons(10, List.Cons(20, List.Cons(30, List.Nil())))
   println(List.sum(l)) // 60
 
