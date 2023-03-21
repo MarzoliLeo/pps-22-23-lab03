@@ -59,6 +59,6 @@ class ListTest:
 
   @Test
   def testGetTeachersCourses() =
-    import u02.Optionals.Modules.Person.*
+    import u02.Modules.Person.*
     val persons = Cons(Student("Alice", 2022), Cons(Teacher("Bob", "Math"), Cons( Teacher("Charlie", "Physics"), Nil())))
     assertEquals(Cons("Math", Cons("Physics", Nil())) getTeacherCourses(persons)) // List("Math", "Physics")

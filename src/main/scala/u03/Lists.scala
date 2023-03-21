@@ -1,5 +1,6 @@
 package u03
 
+import u02.Modules.Person.{Teacher, name}
 import u02.Optionals.*
 import u02.Optionals.Option.*
 
@@ -60,7 +61,24 @@ object Lists extends App :
         }
       }
     }
-  
+
+    //Task 3
+    /*import u02.Modules.*
+    def getTeacherCourses(persons: List[Person]): List[String] =
+      val teachers = persons.filter(_.isInstanceOf[Teacher]).map(_.asInstanceOf[Teacher])
+      val courses = teachers.map(_.course)
+      courses*/
+
+    //Task 4
+    def foldLeft[A, B](list: List[A], initialValue: B)(f: (B, A) => B): B = list match
+      case Nil() => initialValue
+      case (head, tail) => foldLeft(tail, f(initialValue, head))(f)
+
+    def foldRight[A, B](list: List[A], initialValue: B)(f: (A, B) => B): B = list match
+      case Nil() => initialValue
+      case (head, tail) => f(head, foldRight(tail, initialValue)(f))
+
+
   val l = List.Cons(10, List.Cons(20, List.Cons(30, List.Nil())))
   println(List.sum(l)) // 60
 
