@@ -4,6 +4,7 @@ import org.junit.*
 import org.junit.Assert.*
 import Lists.*
 
+
 class ListTest:
   import List.*
 
@@ -58,7 +59,19 @@ class ListTest:
     assertEquals(None(), max(Nil())) // None ()
 
   @Test
-  def testGetTeachersCourses() =
-    import u02.Modules.Person.*
-    val persons = Cons(Student("Alice", 2022), Cons(Teacher("Bob", "Math"), Cons( Teacher("Charlie", "Physics"), Nil())))
-    assertEquals(Cons("Math", Cons("Physics", Nil())) getTeacherCourses(persons)) // List("Math", "Physics")
+  def testFoldLeft() =
+    assertEquals(60, foldLeft(l,0)(_ + _))
+  @Test
+  def testFoldRight() =
+    assertEquals(-60, foldRight(l,0)(_ - _))
+    
+      
+  import u03.Lists.List.Person.*
+  val student = Student("Leo", 22)
+  val teacher = Teacher("Pluto", "Dama")
+  
+  @Test def testIfNoTeachers() =
+    assertEquals(Nil(), listTeachersCourses(Cons(student, Nil())))
+
+  @Test def testFindTeacherCourses() =
+    assertEquals(Cons("Dama", Cons("Dama", Cons("Dama", Nil()))), listTeachersCourses(Cons(teacher, Cons(teacher, Cons(teacher, Cons(student, Nil()))))))
