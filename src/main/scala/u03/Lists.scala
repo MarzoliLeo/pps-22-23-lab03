@@ -51,17 +51,14 @@ object Lists extends App :
 
     //Task 2, svolto da solo.
     import u02.Optionals.Option.*
-    def max(l: List[Int]): Option[Int] = l match {
+    def max(l: List[Int]): Option[Int] = l match 
       case Nil() => None()
       case Cons(h, Nil()) => Some(h)
-      case Cons(h, t) => {
+      case Cons(h, t) => 
         val maxTail = max(t)
-        maxTail match {
+        maxTail match 
           case None() => Some(h)
           case Some(maxVal) => if (maxVal > h) maxTail else Some(h)
-        }
-      }
-    }
 
     //Task 3, svolto da solo.
     enum Person:
