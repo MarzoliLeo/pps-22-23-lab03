@@ -83,3 +83,7 @@ class ListTest:
     assertEquals(Cons (6 , Cons (7 , Cons (8 , Cons (9 , Nil ())))), toList(drop(6,s))) // = > Cons (6 , Cons (7 , Cons (8 , Cons (9 , Nil ()))))
 
   //Test task 6.
+  @Test def testConstantStream() =
+    import u03.Streams.Stream.*
+    assertEquals(Cons ("x", Cons ("x", Cons ("x", Cons ("x", Cons ("x", Nil ()))))), toList (take ( constant ("x") ) (5) ))
+    // = > Cons (x, Cons (x, Cons (x, Cons (x, Cons (x, Nil ())))))

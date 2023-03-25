@@ -38,11 +38,14 @@ object Streams extends App :
       cons(init, iterate(next(init))(next))
 
     //Task 5
-    def drop[A](n: Int, stream: Stream[A]): Stream[A] = (n, stream) match {
+    def drop[A](n: Int, stream: Stream[A]): Stream[A] = (n, stream) match
       case (m, _) if m <= 0 => stream
       case (_, Empty()) => Empty()
       case (m, Cons(_, tail)) => drop(m - 1, tail())
-}
+
+    //Task 6
+    def constant[A](k: A): Stream[A] = Stream.cons(k, constant(k))
+
 
   end Stream
 
