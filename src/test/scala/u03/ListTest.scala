@@ -75,3 +75,11 @@ class ListTest:
 
   @Test def testFindTeacherCourses() =
     assertEquals(Cons("Dama", Cons("Dama", Cons("Dama", Nil()))), listTeachersCourses(Cons(teacher, Cons(teacher, Cons(teacher, Cons(student, Nil()))))))
+
+  //Test task 5.
+  @Test def testDropStream() =
+    import u03.Streams.Stream.*
+    val s = take(iterate(0)(_ + 1))(10)
+    assertEquals(Cons (6 , Cons (7 , Cons (8 , Cons (9 , Nil ())))), toList(drop(6,s))) // = > Cons (6 , Cons (7 , Cons (8 , Cons (9 , Nil ()))))
+
+  //Test task 6.
