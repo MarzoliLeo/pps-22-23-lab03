@@ -87,3 +87,11 @@ class ListTest:
     import u03.Streams.Stream.*
     assertEquals(Cons ("x", Cons ("x", Cons ("x", Cons ("x", Cons ("x", Nil ()))))), toList (take ( constant ("x") ) (5) ))
     // = > Cons (x, Cons (x, Cons (x, Cons (x, Cons (x, Nil ())))))
+
+  //Test task 7.
+  @Test def testFibs() =
+    import u03.Streams.Stream.*
+    type fibs = Stream[Int]
+    val fibs2 = fibs
+    assertEquals ( Cons (0 , Cons (1 , Cons (1 , Cons (2 , Cons (3 , Cons (5 , Cons (8 , Cons (13 , Nil ())))))))), toList ( take ( fibs2 ) (8) ))
+    // = > Cons (0 , Cons (1 , Cons (1 , Cons (2 , Cons (3 , Cons (5 , Cons (8 , Cons (13 , Nil ()))))))))

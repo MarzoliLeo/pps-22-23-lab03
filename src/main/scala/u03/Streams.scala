@@ -37,14 +37,19 @@ object Streams extends App :
     def iterate[A](init: => A)(next: A => A): Stream[A] =
       cons(init, iterate(next(init))(next))
 
-    //Task 5
+    //Task 5, svolto da solo.
     def drop[A](n: Int, stream: Stream[A]): Stream[A] = (n, stream) match
       case (m, _) if m <= 0 => stream
       case (_, Empty()) => Empty()
       case (m, Cons(_, tail)) => drop(m - 1, tail())
 
-    //Task 6
+    //Task 6, svolto da solo.
     def constant[A](k: A): Stream[A] = Stream.cons(k, constant(k))
+
+    //Task 7, svolto da solo.
+    def fibs: Stream[Int] =
+      def loop(a: Int, b: Int): Stream[Int] = Stream.cons(a, loop(b, a + b))
+      loop(0, 1)
 
 
   end Stream
